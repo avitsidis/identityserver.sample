@@ -36,6 +36,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     @if (Context?.User?.Identity?.IsAuthenticated ?? false ) { 
+                        <li><a asp-area="" asp-controller="Home" asp-action="CallAPI">CallAPI</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a></li>
                     }
                 </ul>

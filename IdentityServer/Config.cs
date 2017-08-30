@@ -56,8 +56,13 @@ namespace IdentityServer
                 {
                     ClientId = "mvc",
                     ClientName = "MVC Client",
-                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
 
+
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256()) // a client secret. This will be used to retrieve the access token on the back channel.
+                    },
                     // where to redirect to after login
                     RedirectUris = { "http://localhost:5002/signin-oidc" },
 
@@ -67,8 +72,10 @@ namespace IdentityServer
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
-                    }
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    },
+                    AllowOfflineAccess = true //this allows requesting refresh tokens for long lived API access
                 }
             };
         }

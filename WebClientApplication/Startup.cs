@@ -64,7 +64,13 @@ namespace WebClientApplication
                 RequireHttpsMetadata = false,
 
                 ClientId = "mvc",
-                SaveTokens = true
+                ClientSecret = "secret",
+
+                ResponseType = "code id_token", // use hybrid flow
+                Scope = { "api1", "offline_access" },
+
+                GetClaimsFromUserInfoEndpoint = true,
+                SaveTokens = true // The OpenID Connect middleware saves the tokens (identity, access and refresh in our case) automatically for you. That’s what the SaveTokens setting does.
             });
 
             app.UseStaticFiles();
