@@ -16,11 +16,18 @@ namespace IdentityServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // configure identity server with in-memory stores, keys, clients and resources
+            // configure identity server with in-memory stores, keys, clients and scopes
             services.AddIdentityServer()
                 .AddTemporarySigningCredential()
                 .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients());
+                .AddInMemoryClients(Config.GetClients())
+                .AddTestUsers(Config.GetUsers());
+            /*
+             The AddTestUsers extension method does a couple of things under the hood
+                adds support for the resource owner password grant
+                adds support to user related services typically used by a login UI (we’ll use that in the next quickstart)
+                adds support for a profile service based on the test users (you’ll learn more about that in the next quickstart)
+             */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
