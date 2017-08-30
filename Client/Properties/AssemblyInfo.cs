@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FetchUsersInfoForGitMigration")]
+[assembly: AssemblyTitle("Client")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sodexo")]
-[assembly: AssemblyProduct("FetchUsersInfoForGitMigration")]
+[assembly: AssemblyProduct("Client")]
 [assembly: AssemblyCopyright("Copyright © Sodexo 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1334ac3d-b32c-497f-87e6-6dbde655ec36")]
+[assembly: Guid("258caf26-d484-463d-9a0a-e653975d2de8")]
 
 // Version information for an assembly consists of the following four values:
 //
