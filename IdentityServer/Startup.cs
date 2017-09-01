@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace IdentityServer
 {
     public class Startup
     {
+
+   
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             // configure identity server with in-memory stores, keys, clients and scopes
             services.AddMvc();
+            var cert = new X509Certificate2(File.ReadAllBytes("mycert.pfx"));
 
             // configure identity server with in-memory stores, keys, clients and scopes
             services.AddIdentityServer()
-                .AddTemporarySigningCredential()
+                .AddSigningCredential(cert)
+                //.AddDeveloperSigningCredential()
+                //.AddTemporarySigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients())
